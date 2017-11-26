@@ -10,23 +10,30 @@ import {
   decrementAsync,
 } from '../../actions/counter';
 
-const Home = props => (
-  <div>
-    <h1>Home</h1>
-    <p>Count: {props.count}</p>
-    <div disabled={props.isIncrementing}>
-      <button onClick={props.increment}>Increment</button>
-      <button onClick={props.incrementAsync}>Increment Async</button>
-    </div>
-    <div disabled={props.isDecrementing}>
-      <button onClick={props.decrement}>Decrement</button>
-      <button onClick={props.decrementAsync}>Decrement Async</button>
-    </div>
+const Home = (props) => {
+  const onIncrement = () => props.increment(props.count);
+  const onIncrementAsync = () => props.incrementAsync(props.count);
+  const onDecrement = () => props.decrement(props.count);
+  const onDecrementAsync = () => props.decrementAsync(props.count);
+
+  return (
     <div>
-      <button onClick={() => props.changePage()}>Go to about page via redux</button>
+      <h1>Home</h1>
+      <p>Count: {props.count}</p>
+      <div>
+        <button onClick={onIncrement} disabled={props.isIncrementing}>Increment</button>
+        <button onClick={onIncrementAsync} disabled={props.isIncrementing}>Increment Async</button>
+      </div>
+      <div>
+        <button onClick={onDecrement} disabled={props.isDecrementing}>Decrement</button>
+        <button onClick={onDecrementAsync} disabled={props.isDecrementing}>Decrement Async</button>
+      </div>
+      <div>
+        <button onClick={() => props.changePage()}>Go to about page via redux</button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 Home.propTypes = {
   count: PropTypes.number.isRequired,
