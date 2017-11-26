@@ -1,4 +1,4 @@
-# React-Redux-Saga Starter
+# React-Redux-Saga Seed
 Spin up a new application with React, Redux, Redux-Saga, Redux-Router, and ESLint already wired up!
 
 #### Is it opinionated?
